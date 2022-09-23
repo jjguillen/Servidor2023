@@ -1,1 +1,6 @@
-asfasfa
+<?php
+
+    echo "Primer ejemplo";
+
+
+?>
