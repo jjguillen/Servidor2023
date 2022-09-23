@@ -34,8 +34,12 @@
     //Muestra la cadena al revés
     //strlen - devuelve la longitud de la cadena
     $cadena = "En un lugar de la Mancha de cuyo nombre";
-    echo strlen($cadena); 
-    echo $cadena[1];
+    //echo strlen($cadena); 
+    //echo $cadena[1];
+
+    echo "<br>";
+    for( $i=strlen($cadena)-1; $i>=0; $i--)
+        echo $cadena[$i];
 
 
 
