@@ -13,7 +13,13 @@
 					<div class="collapse show" id="tema1">
 					<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 						<li><a href="/tema1/eje1.php" class="link-dark rounded">Ejercicio 1</a></li>
-						<li><a href="#" class="link-dark rounded">Ejercicio 2</a></li>
+						<li><a href="/tema1/ejemploArrayAsociativo.php" class="link-dark rounded">Ejemplo array asociativo</a></li>
+						<li><a href="/tema1/ejemploclase1.php" class="link-dark rounded">Ejemplo clase 1</a></li>
+						<li><a href="/tema1/ejercicio9.php" class="link-dark rounded">Ejercicio 9</a></li>
+						<li><a href="/tema1/ejercicio11.php" class="link-dark rounded">Ejercicio 11</a></li>
+						<li><a href="/tema1/ejercicio13.php" class="link-dark rounded">Ejercicio 13</a></li>
+						<li><a href="/tema1/ejercicio14.php" class="link-dark rounded">Ejercicio 14</a></li>
+						
 					</ul>
 					</div>
 				</li>
