@@ -20,7 +20,7 @@
 						<li><a href="/tema1/ejercicio13.php" class="link-dark rounded">Ejercicio 13</a></li>
 						<li><a href="/tema1/ejercicio14.php" class="link-dark rounded">Ejercicio 14</a></li>
 						<li><a href="/tema1/ejercicio6_2.php" class="link-dark rounded">Ejercicio 6 - P2</a></li>
-						
+						<li><a href="/tema1/tienda.php" class="link-dark rounded">Tienda (sus propios estilos)</a></li>
 					</ul>
 					</div>
 				</li>
