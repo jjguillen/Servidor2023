@@ -33,7 +33,7 @@
                                 <p class='card-text'>".$valor['descripcion']."</p>";
 
                     //Pintar las tres imágenes
-                    echo "<table class='table table-bordered'>";
+                    echo "<table class='table table-bordered blue-500'>";
                     echo "<tr>";
                     foreach($valor['imagenes'] as $imagenMini) {
                         echo "<td>";
