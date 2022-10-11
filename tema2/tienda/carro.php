@@ -189,7 +189,7 @@
                 </div>
                 <div class="col-lg-5">
 
-                  <div class="card bg-secondary text-white rounded-3">
+                  <div class="card bg-success text-white rounded-3">
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-0">Card details</h5>
