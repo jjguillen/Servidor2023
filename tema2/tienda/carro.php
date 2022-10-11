@@ -24,7 +24,7 @@
         </a>
 
         <div class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <h3>Tienda DeporOnline</h3>
+          <a href='./index.php'><h3>Tienda DeporOnline</h3></a>
         </div>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -59,7 +59,7 @@
 
                 <div class="col-lg-7">
                   <h5 class="mb-3"><a href="./index.php" class="text-body"><i
-                        class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                        class="fas fa-long-arrow-alt-left me-2"></i>Continuar comprando</a></h5>
                   <hr>
 
                   <div class="d-flex justify-content-between align-items-center mb-4">
