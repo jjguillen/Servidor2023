@@ -59,13 +59,13 @@
 
                 <div class="col-lg-7">
                   <h5 class="mb-3"><a href="./index.php" class="text-body"><i
-                        class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                        class="fas fa-long-arrow-alt-left me-2"></i>Continuar comprando</a></h5>
                   <hr>
 
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
-                      <p class="mb-1">Shopping cart</p>
-                      <p class="mb-0">You have 4 items in your cart</p>
+                      <p class="mb-1">Carrito</p>
+                      <p class="mb-0">Tienes xx productos en el carro</p>
                     </div>
                     
                   </div>
