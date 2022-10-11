@@ -11,7 +11,7 @@
     <link href="./css/fontawesome/css/brands.css" rel="stylesheet">
     <link href="./css/fontawesome/css/solid.css" rel="stylesheet">
 
-    <title>Tienda</title>
+    <title>Tienda DeportesCandido</title>
 </head>
 <body>
 
@@ -24,7 +24,7 @@
         </a>
 
         <div class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <a href='./index.php'><h3>Tienda DeporOnline</h3></a>
+          <h3 class='text-secondary'>Tienda DeportesCandido</h3>
         </div>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
