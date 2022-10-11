@@ -63,7 +63,7 @@
                     echo "<div class='card mb-5' style='width: 16rem;'>
                             <img src='".$valor["imagen"]."' class='card-img-top' alt='...'>
                                 <div class='card-body'>
-                                <h5 class='card-title'>".$valor["nombre"]."</h5>
+                                <h4 class='card-title'>".$valor["nombre"]."</h4>
                                 <p class='card-text'>".$valor['descripcion']."</p>";
 
                     //Pintar las tres imágenes
