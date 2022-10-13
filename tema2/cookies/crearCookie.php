@@ -5,6 +5,12 @@ if ($_GET) {
 
     //Leemos lo que ya te gusta
     $gustos = $_COOKIE['servidor'];
+
+    //Aquí desencriptas los datos
+    //-----
+
+    //Aquí habría que meter antes el contador de visitas.
+    //juegos-1#ropa-4
     $gustos = $gustos."#".$_GET['interes'];
 
     //Separar los gustos y meterlos en un array
@@ -14,14 +20,18 @@ if ($_GET) {
     //Volvemos a convertir a string ya quitados los duplicados
     $gustosString = implode("#", $gustosArray);
     
-    setcookie('servidor',$gustosString, time()+36000, "/tema2", "localhost", false, true);
+    //Aquí encriptas los datos 
+    //-----
+
+    setcookie('servidor',$gustosString, time()+60, "/tema2", "localhost", false, true);
     //echo "Cookie creada";
 
     header("Location: index.php");
 }
 
 
-  
+
+
 
 
 
