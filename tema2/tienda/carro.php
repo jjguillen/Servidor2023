@@ -11,7 +11,7 @@
     <link href="./css/fontawesome/css/brands.css" rel="stylesheet">
     <link href="./css/fontawesome/css/solid.css" rel="stylesheet">
 
-    <title>Tienda</title>
+    <title>Tienda DeportesCandido</title>
 </head>
 <body>
 
@@ -24,7 +24,7 @@
         </a>
 
         <div class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <h3>Tienda DeporOnline</h3>
+          <h3 class='text-secondary'>Tienda DeportesCandido</h3>
         </div>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -59,13 +59,13 @@
 
                 <div class="col-lg-7">
                   <h5 class="mb-3"><a href="./index.php" class="text-body"><i
-                        class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                        class="fas fa-long-arrow-alt-left me-2"></i>Continuar comprando</a></h5>
                   <hr>
 
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
-                      <p class="mb-1">Shopping cart</p>
-                      <p class="mb-0">You have 4 items in your cart</p>
+                      <p class="mb-1">Carrito</p>
+                      <p class="mb-0">Tienes xx productos en el carro</p>
                     </div>
                     
                   </div>
@@ -189,7 +189,7 @@
                 </div>
                 <div class="col-lg-5">
 
-                  <div class="card bg-secondary text-white rounded-3">
+                  <div class="card bg-success text-white rounded-3">
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-0">Card details</h5>
@@ -246,19 +246,19 @@
                       </div>
 
                       <div class="d-flex justify-content-between">
-                        <p class="mb-2">Shipping</p>
+                        <p class="mb-2">Envío</p>
                         <p class="mb-2">20.00€</p>
                       </div>
 
                       <div class="d-flex justify-content-between mb-4">
-                        <p class="mb-2">Total(Incl. taxes)</p>
+                        <p class="mb-2">Total(Incluido IVA)</p>
                         <p class="mb-2">4818.00€</p>
                       </div>
 
                       <button type="button" class="btn btn-success btn-block btn-lg">
                         <div class="d-flex justify-content-between">
                           <span>4818.00€ &nbsp;</span>
-                          <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                          <span>Comprar <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                         </div>
                       </button>
 
