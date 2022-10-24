@@ -11,22 +11,34 @@ if ($_GET) {
         //-----
 
         //Aquí habría que meter antes el contador de visitas.
-        //juegos-1#ropa-4
-        $gustos = $gustos."#".$_GET['interes'];
 
         //Separar los gustos y meterlos en un array
         $gustosArray = explode("#",$gustos);
-        $gustosArray = array_unique($gustosArray);
+
+        //CreacionCookie#moda-1#deportes-2
+        $encontrado = false;
+        for($i=1; $i<count($gustosArray); $i++) {
+            //Separa moda de 1
+            
+            $gustoContadorArray = explode("-",$gustosArray[$i]);
+
+            if ($_GET['interes'] == $gustoContadorArray[0]) {
+                $gustoContadorArray[1]++;
+            }
+
+            $gustosArray[$i] = implode("-", $gustoContadorArray);
+        }
 
         //Volvemos a convertir a string ya quitados los duplicados
         $gustosString = implode("#", $gustosArray);
+        
         
         //Aquí encriptas los datos 
         //-----
         setcookie('servidor',$gustosString, time()+60000, "/tema3", "localhost", false, true);
         //echo "Cookie creada";
     } else {
-        setcookie('servidor',"PrimeraVez2", time()+60000, "/tema3", "localhost", false, true);
+        setcookie('servidor',"CreacionCookie#moda-0#deporte-0#juegos-0", time()+60000, "/tema3", "localhost", false, true);
     }
 
 
