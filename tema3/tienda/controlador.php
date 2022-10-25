@@ -1,5 +1,6 @@
 <?php
 session_start();
+//session_destroy();
 
 include("lib.php");
 
@@ -43,6 +44,21 @@ if ($_GET) {
             $_SESSION['carro'] = array();
             header("Location: carro.php");
         }
+
+        //Acción de eliminar una línea del carro
+        if ($_GET['accion'] == "eliminar") {
+            $carroNuevo = array();
+            //Recorremos el carro y borramos la línea correspondiente
+            foreach($_SESSION['carro'] as $linea) {
+                if ($linea['nombre'] != $_GET['id']) {
+                    array_push($carroNuevo,$linea);
+                }
+            }
+
+            $_SESSION['carro'] = $carroNuevo;
+            header("Location: carro.php");
+        }
+
 
     }
 }

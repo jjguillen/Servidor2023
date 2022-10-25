@@ -11,7 +11,7 @@
     echo "<table class='table'>";
     echo "<thead>";
     echo "<tr>";
-    echo "<th>Nombre</th><th>Descripción</th><th>Cantidad</th><th>Precio</th><th>Subtotal</th>";
+    echo "<th>Nombre</th><th>Descripción</th><th>Cantidad</th><th>Precio</th><th>Subtotal</th><th>Acciones</th>";
     echo "</tr>";
     echo "</thead>";
 
@@ -19,6 +19,7 @@
     foreach($_SESSION['carro'] as $lineaCarro) {
       echo "<tr>";
       echo "<td>".$lineaCarro['nombre']."</td><td>".$lineaCarro['descripcion']."</td><td>".$lineaCarro['cant']."</td><td>".$lineaCarro['precio']."€</td><td>".($lineaCarro['precio'] * $lineaCarro['cant'])."€  </td>";
+      echo "<td><a href='controlador.php?accion=eliminar&id=".$lineaCarro['nombre']."'>X</a></td>";
       echo "</tr>";
     }
     echo "</tbody>";
