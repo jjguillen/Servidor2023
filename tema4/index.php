@@ -32,7 +32,7 @@ try {
 
     //Attachments
     //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-    $mail->addAttachment('./lista.txt', 'lista.txt');    //Optional name
+    $mail->addAttachment('./ejemplo.pdf', 'ejemplo.pdf');    //Optional name
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
