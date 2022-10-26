@@ -9,4 +9,6 @@ $datos = file_get_contents("https://www.marca.com/futbol/barcelona/2022/10/26/63
 file_put_contents("noticia.html",$datos,FILE_APPEND|LOCK_EX);
 
 //unlink("noticia.html");
+
+
 ?>
