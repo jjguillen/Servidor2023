@@ -75,8 +75,8 @@ $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.
-$pdf->Output('ejemplo.pdf', 'D');
-
+$flujo = $pdf->Output('ejemplo.pdf', 'S');
+file_put_contents("ejemplo.pdf", $flujo);
 //============================================================+
 // END OF FILE
 //============================================================+
