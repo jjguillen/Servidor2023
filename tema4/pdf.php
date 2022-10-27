@@ -73,10 +73,14 @@ $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
 // ---------------------------------------------------------
 
+echo "Generando ...";
+
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.
 $flujo = $pdf->Output('ejemplo.pdf', 'S');
 file_put_contents("ejemplo.pdf", $flujo);
+
+echo "Generado."
 //============================================================+
 // END OF FILE
 //============================================================+
