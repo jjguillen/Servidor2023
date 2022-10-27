@@ -35,11 +35,11 @@ if ($_GET) {
         //-----
 
         //Creación de la cookie
-        setcookie('servidor',$gustosString, time()+60000, "/tema3", "http://servidorphp23.herokuapp.com", false, true);
+        setcookie('servidor',$gustosString, time()+60000, "/tema3", "servidorphp23.herokuapp.com", true, false);
         //echo "Cookie creada";
     } else {
         //Primera vez que entra
-        setcookie('servidor',"CreacionCookie#moda-0#deporte-0#juegos-0", time()+60000, "/tema3", "http://servidorphp23.herokuapp.com", false, true);
+        setcookie('servidor',"CreacionCookie#moda-0#deporte-0#juegos-0", time()+60000, "/tema3", "servidorphp23.herokuapp.com", true, false);
     }
 
 
