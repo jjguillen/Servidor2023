@@ -36,7 +36,7 @@ try {
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Correo de prueba con Gmail';
+    $mail->Subject = 'Correo de mi página de proyectos';
     $mail->Body    = 'Este el cuerpo del mensaje <b>ojo, viene con adjunto!</b>';
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
