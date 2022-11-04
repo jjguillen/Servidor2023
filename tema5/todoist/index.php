@@ -11,16 +11,24 @@
 </head>
 <body>
 
+    <div class='container'></div>
+        <div class="row align-items-center">
+            <div class='col-3'></div>
+            <div class='col-3'>
+
+              <h1>TODOIST</h1>
+              <br>
+
 <?php
     
     function pintarFormulario() {
 
         echo "<div class='container'>
         <div class='row' style='width: 280px;'>
-          <form action='index.php' method='post' > 
+          <form action='controlador.php' method='post' > 
               <div class='mb-3'>
-                  <label for='exampleInputEmail1' class='form-label'>Email</label>
-                  <input type='email' name='email' class='form-control' aria-describedby='emailHelp'>
+                  <label for='exampleInputEmail1' class='form-label'>Login</label>
+                  <input type='text' name='login' class='form-control' aria-describedby='emailHelp'>
               </div>
               <div class='mb-3'>
                   <label for='exampleInputPassword1' class='form-label'>Password</label>
@@ -52,7 +60,12 @@ if (isset($_POST['login'])) {  //Saber si ha mandado algo por GET
         pintarFormulario();
 }
 
+
 ?>
+
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
