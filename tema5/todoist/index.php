@@ -34,7 +34,7 @@
                   <label for='exampleInputPassword1' class='form-label'>Password</label>
                   <input type='password' name='password' class='form-control'>
               </div>
-              <button type='submit' name='login' class='btn btn-primary'>Enviar</button>
+              <button type='submit' name='acceso' class='btn btn-primary'>Enviar</button>
           </form>
         </div>
       </div>";
@@ -42,25 +42,7 @@
     }
 
 
-
-
-if (isset($_POST['login'])) {  //Saber si ha mandado algo por GET
-    //Comprobar que la contraseña es correcta
-    if ($_POST['password'] == "12345678") {
-        echo "Contraseña correcta";
-        if (isset($_POST['email'])) {
-            echo "<br>Bienvenido ".$_POST['email'];
-        }
-    } else {
-        //No se puede hacer ningún echo antes de él
-        echo "<p class='text-danger'>Password incorrecto</p>";
-        pintarFormulario();
-    }
-} else {
-        pintarFormulario();
-}
-
-
+    pintarFormulario();
 ?>
 
             </div>
