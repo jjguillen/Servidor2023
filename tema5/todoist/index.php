@@ -1,12 +1,17 @@
 <?php
 session_start(); 
+
+    if (isset($_SESSION['login'])) {
+        header("Location: controlador.php?accion=acceso");
+    } 
+
     include('cabecera.php');
 
     function pintarFormulario() {
 
         echo "<div class='container'>
         <div class='row' style='width: 280px;'>
-          <form action='controlador.php' method='post' > 
+          <form action='controlador.php' method='POST' > 
               <div class='mb-3'>
                   <label for='exampleInputEmail1' class='form-label'>Login</label>
                   <input type='text' name='login' class='form-control' aria-describedby='emailHelp'>

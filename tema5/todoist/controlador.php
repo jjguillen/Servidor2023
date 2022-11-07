@@ -16,7 +16,8 @@ session_start();
                 $_SESSION['login'] = $login;
                 //Sacar todas las tareas de ese usuario de la BBDD
                 $tareas = selectTareas($id);
-                pintarTareas($tareas);
+                $tareasFinalizadas = selectTareasFinalizadas($id);
+                pintarTareas($tareas, $tareasFinalizadas);
 
                 //Para hacerlo con varios ficheros
                 //header("Location: tareas.php?id=".$id);
@@ -39,12 +40,36 @@ session_start();
             header("Location: index.php");
         }
 
-        //PINTAR EL FORMULARIO DE NUEVA TAREA
-        if ($_GET['accion'] == 'nuevaTarea') {
-            pintarFormularioNuevaTarea();
+        //Voy al index pero ya estoy logueado
+        if ($_GET['accion'] == 'acceso') {
+            $id = getUsuario($_SESSION['login']);
+            $tareas = selectTareas($id);
+            $tareasFinalizadas = selectTareasFinalizadas($id);
+            pintarTareas($tareas, $tareasFinalizadas);
         }
 
+        if ($_GET['accion'] == 'borrarTarea') {
+            borrarTarea(filtrado($_GET['id']));
+            header("Location: controlador.php?accion=acceso");
+
+        }
+
+        if ($_GET['accion'] == 'finalizarTarea') {
+            finalizarTarea(filtrado($_GET['id']));
+            header("Location: controlador.php?accion=acceso");
+
+        }
     }
 
+    if (isset($_GET['insertarTarea'])) {
+        $nombre = filtrado($_GET['nombre']);
+        $descripcion = filtrado($_GET['descripcion']);
+        $prioridad = filtrado($_GET['prioridad']);
+        $fechaFin = filtrado($_GET['fechaFin']);
+        insertarTarea($nombre,$descripcion,$prioridad,$fechaFin, getUsuario($_SESSION['login']));
+
+        header("Location: controlador.php?accion=acceso");
+
+    }
 
 ?>
