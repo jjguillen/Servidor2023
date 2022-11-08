@@ -7,8 +7,8 @@
 
         try {
             //mariadb --> nombre del contenedor donde tengamos mysql
-            $dsn = "mysql:host=mariadb;dbname=todoist";
-            $dbh = new PDO($dsn, "usuario", "usuario");
+            $dsn = "mysql:host=mysql;dbname=servidor";
+            $dbh = new PDO($dsn, "root", "toor");
         } catch (PDOException $e){
             echo $e->getMessage();
         }
@@ -73,6 +73,7 @@
      */
     function getUsuario($login) {
         $conexion = conexionBD();
+        $id = null;
 
         try {
             $stmt = $conexion->prepare("SELECT * FROM usuarios WHERE login = ?");
@@ -92,14 +93,38 @@
      * Obtener todas las tareas del BBDD del usuario $idUsuario
      * Tareas no finalizadas o cuya fecha de fin no haya pasado
      */
-    function selectTareas($idUsuario) {
+    function selectTareas($idUsuario, $busqueda) {
+        $conexion = conexionBD();
+        $tareas = null;
+        try {
+            $stmt = $conexion->prepare("SELECT * FROM tareas WHERE idUsuario = ? 
+                AND finalizada = 0 AND fechaFin >= ? AND nombre LIKE ?");
+            $stmt->bindValue(1, $idUsuario);
+            $stmt->bindValue(2, date('Y-m-d'));
+            $stmt->bindValue(3, "%".$busqueda."%");
+            $stmt->execute();
+            $tareas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }   
+        $conexion = null; //Cerrar la conexión
+
+        return $tareas;
+    }
+
+
+    /**
+     * Obtener todas las tareas del BBDD del usuario $idUsuario
+     * Tareas no finalizadas o cuya fecha de fin no haya pasado
+     */
+    function selectTareasOrdenado($idUsuario, $orden) {
         $conexion = conexionBD();
 
         try {
-            $stmt = $conexion->prepare("SELECT * FROM tareas WHERE idUsuario = ? AND finalizada = 0 AND fechaFin >= ?");
+            $stmt = $conexion->prepare("SELECT * FROM tareas WHERE idUsuario = ? 
+            AND finalizada = 0 AND fechaFin >= ? ORDER BY ".$orden." ASC");
             $stmt->bindValue(1, $idUsuario);
             $stmt->bindValue(2, date('Y-m-d'));
-            
             $stmt->execute();
             $tareas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $ex) {
@@ -110,18 +135,21 @@
         return $tareas;
     }
 
+
     /**
      * Obtener todas las tareas del BBDD del usuario $idUsuario
      * Tareas finalizadas o cuya fecha de fin haya pasado
      */
-    function selectTareasFinalizadas($idUsuario) {
+    function selectTareasFinalizadas($idUsuario,$busqueda) {
         $conexion = conexionBD();
+        $tareas = null;
 
         try {
-            $stmt = $conexion->prepare("SELECT * FROM tareas WHERE idUsuario = ? AND ( finalizada = 1 OR fechaFin < ? ) ");
+            $stmt = $conexion->prepare("SELECT * FROM tareas WHERE idUsuario = ? 
+                AND ( finalizada = 1 OR fechaFin < ? ) AND nombre LIKE ? ");
             $stmt->bindValue(1, $idUsuario);
             $stmt->bindValue(2, date('Y-m-d'));
-            
+            $stmt->bindValue(3, "%".$busqueda."%");
             $stmt->execute();
             $tareas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $ex) {

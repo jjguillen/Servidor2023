@@ -15,7 +15,16 @@
     include('cabecera.php');
 
     echo "<div class='row justify-content-end p-3'>";
-    echo "<div class='col-10'></div>";
+    echo "<div class='col-10'>";
+    echo "<form action='controlador.php' method='get'>";
+    echo "<div class='row'><div class='col-6'>";
+    echo "<input type='text' name='buscador' class='form-control'>";
+    echo "</div>";
+    echo "<div class='col-2'>";
+    echo "<input type='submit' name='buscar' value='Buscar' class='form-control btn btn-success'>";
+    echo "</div></div>";
+    echo "</form>";
+    echo "</div>";
     echo "<div class='col-2'>";
     echo "
     <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#nuevaTarea'>
@@ -30,9 +39,13 @@
     //Cabecera
     echo "<li class='list-group-item fw-bold'>";
     echo "<div class='row'>";
-    echo "<div class='col'>Nombre</div>";
+    echo "<div class='col'>Nombre&nbsp;";
+    echo "<a href='controlador.php?accion=acceso&ordenado=nombre'><i class='fa-solid fa-arrow-down'></i></a>";
+    echo "</div>";
     echo "<div class='col'>Descripción</div>";
-    echo "<div class='col'>Prioridad</div>";
+    echo "<div class='col'>Prioridad&nbsp";
+    echo "<a href='controlador.php?accion=acceso&ordenado=prioridad'><i class='fa-solid fa-arrow-down'></i></a>";
+    echo "</div>";
     echo "<div class='col'>Fecha Creación</div>";
     echo "<div class='col'>Fecha Fin</div>";
     echo "<div class='col'>Acciones</div>";
