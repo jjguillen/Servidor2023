@@ -19,7 +19,7 @@
     echo "<div class='col-2'>";
     echo "
     <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#nuevaTarea'>
-      Nueva Tarea
+      Tarea nueva
     </button>";
 
     echo "</div>";
