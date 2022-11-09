@@ -2,13 +2,27 @@
     /**
      * Crea una conexión nueva a BBDD
      */
-    function conexionBD() {
+    function conexionBD2() {
         $dbh = null;
 
         try {
             //mariadb --> nombre del contenedor donde tengamos mysql
             $dsn = "mysql:host=mysql;dbname=servidor";
             $dbh = new PDO($dsn, "root", "toor");
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
+
+        return $dbh;
+    }
+
+    function conexionBD() {
+        $dbh = null;
+
+        try {
+            //mariadb --> nombre del contenedor donde tengamos mysql
+            $dsn = "mysql:host=eu-cdbr-west-03.cleardb.net;dbname=heroku_b3882979aa94dad";
+            $dbh = new PDO($dsn, "b5accec211fb01", "a3ec5925");
         } catch (PDOException $e){
             echo $e->getMessage();
         }
