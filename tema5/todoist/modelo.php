@@ -21,8 +21,8 @@
 
         try {
             //mariadb --> nombre del contenedor donde tengamos mysql
-            $dsn = "mysql:host=eu-cdbr-west-03.cleardb.net;dbname=heroku_b3882979aa94dad";
-            $dbh = new PDO($dsn, "b5accec211fb01", "a3ec5925");
+            $dsn = "mysql:host=primary.misql--b672l9qtqvt6.addon.code.run;dbname=389c4b26dd33";
+            $dbh = new PDO($dsn, "492c80cd9404c422", "ad259835f91b6bf3fd4d93c928bf85");
         } catch (PDOException $e){
             echo $e->getMessage();
         }
