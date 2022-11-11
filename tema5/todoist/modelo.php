@@ -21,8 +21,8 @@
 
         try {
             //mariadb --> nombre del contenedor donde tengamos mysql
-            $dsn = "mysql:host=primary.misql--b672l9qtqvt6.addon.code.run;dbname=389c4b26dd33";
-            $dbh = new PDO($dsn, "492c80cd9404c422", "ad259835f91b6bf3fd4d93c928bf85");
+            $dsn = "mysql:host=srv-captain--mrfqpbthcl-mariadb-10x;dbname=servidor2023-database";
+            $dbh = new PDO($dsn, "servidor2023-user", "hEqe3M4URa8w");
         } catch (PDOException $e){
             echo $e->getMessage();
         }
