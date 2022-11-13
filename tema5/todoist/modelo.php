@@ -18,11 +18,11 @@
 
     function conexionBD() {
         $dbh = null;
-
+        //server=primary.jjgbservidor2023--5gj5gnv5gpqs.addon.code.run:55565;uid=adbfa08be12eedc1;password=69274c018893d1b3df1b1bad86e42e;database=5ee4b437a302
         try {
             //mariadb --> nombre del contenedor donde tengamos mysql
-            $dsn = "mysql:host=srv-captain--mrfqpbthcl-mariadb-10x;dbname=servidor2023-database";
-            $dbh = new PDO($dsn, "servidor2023-user", "hEqe3M4URa8w");
+            $dsn = "mysql:host=srv-captain--mrfqpbthcl-mariadb-10xprimary.jjgbservidor2023--5gj5gnv5gpqs.addon.code.run:55565;dbname=5ee4b437a302";
+            $dbh = new PDO($dsn, "adbfa08be12eedc1", "69274c018893d1b3df1b1bad86e42e");
         } catch (PDOException $e){
             echo $e->getMessage();
         }
