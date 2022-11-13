@@ -21,8 +21,8 @@
         //server=primary.jjgbservidor2023--5gj5gnv5gpqs.addon.code.run:55565;uid=adbfa08be12eedc1;password=69274c018893d1b3df1b1bad86e42e;database=5ee4b437a302
         try {
             //mariadb --> nombre del contenedor donde tengamos mysql
-            $dsn = "mysql:host=primary.jjgbservidor2023--5gj5gnv5gpqs.addon.code.run;dbname=5ee4b437a302";
-            $dbh = new PDO($dsn, "adbfa08be12eedc1", "69274c018893d1b3df1b1bad86e42e");
+            $dsn = "mysql:host=141.94.20.170;dbname=admin_servidor2023";
+            $dbh = new PDO($dsn, "user", "iesjaroso2023");
         } catch (PDOException $e){
             echo $e->getMessage();
         }
