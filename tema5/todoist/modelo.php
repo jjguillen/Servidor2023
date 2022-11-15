@@ -2,7 +2,7 @@
     /**
      * Crea una conexión nueva a BBDD
      */
-    function conexionBD2() {
+    function conexionBD() {
         $dbh = null;
 
         try {
@@ -16,7 +16,7 @@
         return $dbh;
     }
 
-    function conexionBD() {
+    function conexionBD2() {
         $dbh = null;
         //server=primary.jjgbservidor2023--5gj5gnv5gpqs.addon.code.run:55565;uid=adbfa08be12eedc1;password=69274c018893d1b3df1b1bad86e42e;database=5ee4b437a302
         try {

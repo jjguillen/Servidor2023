@@ -35,7 +35,7 @@
     echo "</div>";
 
     echo "<p class='text-secondary'>Tareas Pendientes</p>";
-    echo "<ul class='list-group'>";
+    echo "<ul class='list-group' id='acciones'>";
     //Cabecera
     echo "<li class='list-group-item fw-bold'>";
     echo "<div class='row'>";
@@ -72,6 +72,11 @@
       echo "<a href='controlador.php?accion=finalizarTarea&id=".$tarea['id']."'>";
       echo "<i class='fa-solid fa-check text-danger'></i>";
       echo "</a>";
+      echo "
+    <a accion='modificar' valor='".$tarea['id']."'>
+    <span id='id' value='".$tarea['id']."'></span>
+    <i class='fa-solid fa-pen text-primary'></i>
+    </a>";
       echo "</div>";
 
       echo "</div>";
