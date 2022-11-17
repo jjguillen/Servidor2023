@@ -74,7 +74,6 @@
       echo "</a>";
       echo "
     <a accion='modificar' valor='".$tarea['id']."'>
-    <span id='id' value='".$tarea['id']."'></span>
     <i class='fa-solid fa-pen text-primary'></i>
     </a>";
       echo "</div>";

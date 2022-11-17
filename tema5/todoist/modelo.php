@@ -7,7 +7,7 @@
 
         try {
             //mariadb --> nombre del contenedor donde tengamos mysql
-            $dsn = "mysql:host=mysql;dbname=servidor";
+            $dsn = "mysql:host=mariadb;dbname=todoist";
             $dbh = new PDO($dsn, "root", "toor");
         } catch (PDOException $e){
             echo $e->getMessage();
