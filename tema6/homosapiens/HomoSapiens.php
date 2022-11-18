@@ -1,5 +1,4 @@
 <?php
-    include_once "Reproductor.php";
 
     abstract class HomoSapiens implements Reproductor {
 
@@ -11,6 +10,11 @@
         public function reproducirse() {
             echo "Viva la especie<br>";
         }
+
+        public function pintar() {
+            echo $this;
+        }
+    
 
     }
 

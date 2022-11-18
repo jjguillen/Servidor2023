@@ -1,6 +1,15 @@
 <?php
-    include "Persona.php";
-    include "Neandertal.php";
+
+    function cargar($clase) {
+        $ruta = "./".$clase.".php";
+        if (file_exists($ruta)){
+            include_once $ruta;
+        }
+    }
+
+    spl_autoload_register("cargar");
+
+
 
     class RestosArq {
         
@@ -29,6 +38,7 @@
 
     foreach($restos->restos as $resto) {
         echo $resto->reproducirse();
+        echo $resto->pintar();
     }
 
 

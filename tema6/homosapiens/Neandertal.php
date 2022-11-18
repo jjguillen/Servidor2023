@@ -1,5 +1,4 @@
 <?php
-    include_once "HomoSapiens.php";
 
     class Neandertal extends HomoSapiens {
 
@@ -13,6 +12,11 @@
             echo "Puede hablar: ".$this->habla;
         }
 
+        public function __toString() {
+            return serialize($this);
+        }
+
+       
 
     }
 

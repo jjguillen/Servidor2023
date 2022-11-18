@@ -1,6 +1,5 @@
 <?php
 
-include_once "HomoSapiens.php";
 
 class Persona extends HomoSapiens {
     private $nombre;
@@ -45,13 +44,16 @@ class Persona extends HomoSapiens {
         echo "Hola, soy " . $this->nombre;
     }
 
-    public function pintar() {
-        echo "<p>".$this->nombre."</p>";
-        echo "<p>".$this->edad."</p>";
-        echo "<p>".$this->sexo."</p>";
-        echo "<p>".self::$numOjos."</p>";
+    public function __toString() {
+        $cadena  ="";
+        $cadena .= $this->nombre." - ";
+        $cadena .= $this->edad." - ";
+        $cadena .= $this->sexo." - ";
+
+        return $cadena;
     }
 
+    
     public function comunica() {
         echo "Puede hablar: ".$this->habla;
     }
