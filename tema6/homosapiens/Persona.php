@@ -1,6 +1,8 @@
 <?php
 
-class Persona {
+include_once "HomoSapiens.php";
+
+class Persona extends HomoSapiens {
     private $nombre;
     private $edad;
     private $sexo;
@@ -10,6 +12,8 @@ class Persona {
         $this->nombre = $nombre;
         $this->edad = $edad;
         $this->sexo = $sexo;
+        $this->capacidadCraneal = 1800;
+        $this->habla = true;
     }
  
 
@@ -48,8 +52,17 @@ class Persona {
         echo "<p>".self::$numOjos."</p>";
     }
 
-}
+    public function comunica() {
+        echo "Puede hablar: ".$this->habla;
+    }
 
+    public function reproducirse() {
+        parent::reproducirse();
+        echo "Nosotros lo hacemos también por placer<br>";
+    }
+
+}
+/*
 $pepe = new Persona(edad: 13, sexo: "H", nombre: "Javi");
 $pepe->pintar();
 
@@ -61,4 +74,6 @@ $otro->pintar();
 
 echo "".Persona::$numOjos;
 
+$otro->comunica();
+*/
 ?>
