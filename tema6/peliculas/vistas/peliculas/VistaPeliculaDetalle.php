@@ -2,7 +2,7 @@
 
     class VistaPeliculaDetalle {
 
-        public static function render($pelicula) {
+        public static function render($pelicula, $criticas) {
 
             include("./vistas/cabecera.php");
 
@@ -25,17 +25,47 @@
                     <p class="card-text">'.$pelicula->getSinopsis().'</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <a href="enrutador.php?accion=verPelicula&id='.$pelicula->getId().'" type="button" class="btn btn-sm btn-outline-secondary">View</a>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                        <button id="verCriticas" type="button" class="btn btn-sm btn-outline-secondary">Criticas</button>
                       </div>
                       <small class="text-muted">Nota: '.$pelicula->getNotaImdb().'</small>
                     </div>
                   </div>
                 </div>
               </div>';
+
+              echo "<div class='col' id='criticas'>
+                <h3>CRÍTICAS</h3>
+                <ul class='list-group'>";
+
+              foreach($criticas as $critica) {
+                echo "<li class='list-group-item'><p>".$critica->nick." - ".$critica->getNota()."</p><p>".$critica->getTexto()."</p></li>";
+              }
+              
+              echo"
+                </ul>
+              </div>
+              ";
          
 
             echo "</div></div></div>";
+
+            echo "<script>
+            
+              document.getElementById('criticas').style.visibility = 'hidden'; 
+              document.getElementById('verCriticas').addEventListener('click', async function(e) {
+                let valor = document.getElementById('criticas').style.visibility; 
+                if (valor == 'hidden') {
+                  document.getElementById('criticas').style.visibility = 'visible'; 
+                } else {
+                  document.getElementById('criticas').style.visibility = 'hidden'; 
+                }
+
+              });
+
+            
+            </script>";
+
 
 
             include("./vistas/pie.php");

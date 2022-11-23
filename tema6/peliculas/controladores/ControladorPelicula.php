@@ -14,9 +14,10 @@
         public static function mostrarPelicula($id) {
             //LLamar al modelo para obtener el objeto de la pelicula con id $id
             $pelicula = PeliculaBD::getPelicula($id);
+            $criticas = CriticaBD::getCriticas($id);
 
             //Llamar a la vista para pintar la película en detalle
-            VistaPeliculaDetalle::render($pelicula);
+            VistaPeliculaDetalle::render($pelicula, $criticas);
         }
 
 
