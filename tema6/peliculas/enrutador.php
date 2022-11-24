@@ -52,6 +52,9 @@
                 ControladorPelicula::mostrarPelicula($id);
             }
 
+            if ($_REQUEST['accion'] == "verFormularioNuevaCritica") {
+                ControladorCritica::mostrarFormularioNuevaCritica();
+            }
 
 
 
