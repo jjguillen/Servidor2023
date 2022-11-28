@@ -1,5 +1,6 @@
 <?php
-    
+session_start(); 
+
     //AUTOLOAD
     function autocarga($clase){ 
         $ruta = "./controladores/$clase.php"; 
@@ -43,7 +44,13 @@
 
             //Inicio
             if ($_REQUEST['accion'] == "inicio") {
-                ControladorPelicula::mostrarPeliculas();
+                ControladorPelicula::mostrarPeliculas(-1);
+            }
+
+            //Error
+            if ($_REQUEST['accion'] == "error") {
+                $codigo = filtrado($_REQUEST['codigo']);
+                ControladorPelicula::mostrarPeliculas($codigo);
             }
 
             //Ver película en detalle
@@ -51,12 +58,41 @@
                 $id = filtrado($_REQUEST['id']);
                 ControladorPelicula::mostrarPelicula($id);
             }
-
-            if ($_REQUEST['accion'] == "verFormularioNuevaCritica") {
-                ControladorCritica::mostrarFormularioNuevaCritica();
+            
+            //Insertar película
+            if ($_REQUEST['accion'] == "nuevaPelicula") {
+                $titulo = filtrado($_REQUEST['titulo']);
+                $sinopsis = filtrado($_REQUEST['sinopsis']);
+                $cartel = filtrado($_REQUEST['cartel']);
+                $notaImdb = filtrado($_REQUEST['notaImdb']);
+                $director = filtrado($_REQUEST['director']);
+                $year = filtrado($_REQUEST['year']);
+                $pelicula = new Pelicula($titulo,$sinopsis,$cartel,$notaImdb,$director,$year);
+                ControladorPelicula::insertarPelicula($pelicula);
             }
 
+            //Login usuario
+            if ($_REQUEST['accion'] == "login") {
+                $email = filtrado($_REQUEST['email']);
+                $password = filtrado($_REQUEST['password']);
+                ControladorUsuario::login($email,$password);
+            }
 
+            //Destruir sesion
+            if ($_REQUEST['accion'] == "destruirsesion") {
+                session_destroy();
+                echo "<script>window.location='enrutador.php?accion=inicio'</script>";
+            }
+
+            //Nueva críticas
+            if ($_REQUEST['accion'] == "nuevaCritica") {
+                $nota = filtrado($_REQUEST['nota']);
+                $texto = filtrado($_REQUEST['texto']);
+                $fecha = filtrado($_REQUEST['fecha']);
+                $id_pelicula = filtrado($_REQUEST['id_pelicula']);
+                $usuario = unserialize($_SESSION['usuario']);
+                ControladorCritica::nuevaCritica($usuario->getId(), $id_pelicula, $nota, $texto, $fecha);
+            }
 
         }
     }

@@ -19,7 +19,23 @@
             return $pelicula;
         }
 
+        public static function nuevaCritica($critica) {
+            $conexion = ConexionBD::conectar();
 
+            //Consulta BBDD
+            $stmt = $conexion->prepare("INSERT INTO criticas (id_usuario, id_pelicula, nota, texto, fecha) 
+                        VALUES (?, ?, ?, ?, ?) " );
+            $stmt->bindValue(1,$critica->getId_usuario());
+            $stmt->bindValue(2,$critica->getId_pelicula());
+            $stmt->bindValue(3,$critica->getNota());
+            $stmt->bindValue(4,$critica->getTexto());
+            $stmt->bindValue(5,$critica->getFecha());
+
+            //echo $stmt->debugDumpParams();
+            $stmt->execute();
+
+            ConexionBD::cerrar();
+        }
 
     }
 

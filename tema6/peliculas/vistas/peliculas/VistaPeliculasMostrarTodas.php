@@ -2,10 +2,10 @@
 
     class VistaPeliculasMostrarTodas {
 
-        public static function render($peliculas) {
+        public static function render($peliculas,$codigo) {
 
             include("./vistas/cabecera.php");
-
+echo "Quitar ".$codigo;
             echo ' <div class="album py-5 bg-light">
             <div class="container">
         

@@ -45,14 +45,26 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
+          <h4 class="text-white">Acerca</h4>
           <p class="text-muted">Página molona para puntuar tus pelis favoritas</p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Contacto</h4>
+          <h4 class="text-white">Usuario</h4>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-            <li><a href="#" class="text-white">Email me</a></li>
+
+<?php
+
+    if (isset($_SESSION['usuario'])) {
+      $usuario = unserialize($_SESSION['usuario']);
+      echo '<li class="text-white">Bienvenido '.$usuario->getNick().'</li>';
+      echo '<li><a href="enrutador.php?accion=destruirsesion" class="text-white">Cerrar</a></li>';
+    } else {
+      echo '<li><a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#login">Login</a></li>';
+    }
+
+?>
+
+            
           </ul>
         </div>
       </div>
@@ -77,7 +89,9 @@
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">FILMAFFINITYV2</h1>
-        <p><a href='./enrutador.php?accion=verFormNuevaPelicula'>Nueva Pelicula</a></p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevaPelicula">
+          Nueva Película
+        </button>
       </div>
     </div>
   </section>

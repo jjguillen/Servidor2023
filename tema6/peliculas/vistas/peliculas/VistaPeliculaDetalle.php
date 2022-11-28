@@ -43,8 +43,16 @@
               }
               
               echo"
-                </ul>
-              </div>
+                </ul>";
+
+              //Botón de añadir críticas 
+              if (isset($_SESSION['usuario'])) {
+                echo '<button type="button" class="btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#nuevaCritica">
+                +
+                </button>';
+              }
+
+              echo "</div>
               ";
          
 
