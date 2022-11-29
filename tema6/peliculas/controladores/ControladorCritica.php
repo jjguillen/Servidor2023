@@ -1,5 +1,5 @@
 <?php
-
+    
     class ControladorCritica {
 
         public static function nuevaCritica($id_usuario, $id_pelicula, $nota, $texto, $fecha) {
