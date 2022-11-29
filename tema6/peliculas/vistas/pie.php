@@ -22,7 +22,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id='nuevaPeliculaForm'>
+        <form id='nuevaPeliculaForm' enctype="multipart/form-data">
           <div class="mb-3">
             <label class="form-label">Título</label>
             <input type="text" class="form-control" name="titulo">
@@ -33,7 +33,7 @@
           </div>
           <div class="mb-3">
             <label class="form-label">Cartel</label>
-            <input type="text" class="form-control" name="cartel">
+            <input type="file" class="form-control" name="cartel">
           </div>
           <div class="mb-3">
             <label class="form-label">Nota</label>

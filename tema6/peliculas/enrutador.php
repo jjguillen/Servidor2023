@@ -31,6 +31,38 @@ session_start();
     spl_autoload_register("autocarga");
 
 
+    //Función para subir imágenes al servidor
+    function subirImagen() {
+
+        $directorioSubida = "imgs/";
+        $extensionesValidas = array("jpg", "png", "gif");
+        if(isset($_FILES['cartel'])){
+            $errores = array();
+            $nombreArchivo = $_FILES['cartel']['name'];
+            $directorioTemp = $_FILES['cartel']['tmp_name'];
+            $tipoArchivo = $_FILES['cartel']['type'];
+            $arrayArchivo = pathinfo($nombreArchivo);
+            $extension = $arrayArchivo['extension'];
+            // Comprobamos la extensión del archivo
+            if(!in_array($extension, $extensionesValidas)){
+                $errores[] = "La extensión del archivo no es válida o no se ha subido ningún archivo";
+            }
+    
+            // Comprobamos y renombramos el nombre del archivo
+            $nombreArchivo = $arrayArchivo['filename'];
+            $nombreArchivo = preg_replace("/[^A-Z0-9._-]/i", "_", $nombreArchivo);
+            $nombreArchivo = $nombreArchivo . rand(1, 100);
+            // Desplazamos el archivo si no hay errores
+            if(empty($errores)){
+                $nombreCompleto = $directorioSubida.$nombreArchivo.".".$extension;
+                move_uploaded_file($directorioTemp, $nombreCompleto);
+                //print "El archivo se ha subido correctamente";
+            }
+        }
+
+        return $nombreCompleto;
+    }
+
     //Función para filtrar los campos del formulario
     function filtrado($datos){
         $datos = trim($datos); // Elimina espacios antes y después de los datos
@@ -63,12 +95,15 @@ session_start();
             if ($_REQUEST['accion'] == "nuevaPelicula") {
                 $titulo = filtrado($_REQUEST['titulo']);
                 $sinopsis = filtrado($_REQUEST['sinopsis']);
-                $cartel = filtrado($_REQUEST['cartel']);
+
+                $cartel = subirImagen();
+                
                 $notaImdb = filtrado($_REQUEST['notaImdb']);
                 $director = filtrado($_REQUEST['director']);
                 $year = filtrado($_REQUEST['year']);
                 $pelicula = new Pelicula($titulo,$sinopsis,$cartel,$notaImdb,$director,$year);
                 ControladorPelicula::insertarPelicula($pelicula);
+                
             }
 
             //Login usuario
