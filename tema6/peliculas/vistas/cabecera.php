@@ -88,7 +88,7 @@
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">FILMAFFINITYV3</h1>
+        <h1 class="fw-light">FILMAFFINITYV4</h1>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevaPelicula">
           Nueva Película
         </button>
