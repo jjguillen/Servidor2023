@@ -14,8 +14,9 @@
     <div class="container">
         <h2>Noticias 24</h2>
 
-
-        <button id='bNuevaNoticia' accion='cargarForm' class='btn btn-primary mb-3'>Nueva</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNuevaNoticia">
+            Nueva
+        </button>
 
         <div id="ajax">
     

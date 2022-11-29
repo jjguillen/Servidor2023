@@ -18,11 +18,6 @@
             NoticiaBD::borrarNoticia($id);
         }
 
-
-        public static function nuevaNoticia() {
-            VistaFormularioNoticias::render("");
-        }
-
         public static function crearNoticia($noticia) {
             $noticiaOO = new Noticia(0,$noticia['encabezado'],$noticia['texto'],$noticia['fecha']);
             NoticiaBD::insertNoticia($noticiaOO);

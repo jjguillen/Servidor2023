@@ -44,11 +44,6 @@
                 ControladorNoticia::mostrarNoticiasAjax();
             }
 
-            //Nueva noticia
-            if ($_REQUEST['accion'] == "nuevaNoticia") {
-                ControladorNoticia::nuevaNoticia();
-            }
-
             //Crear noticia en BD
             if ($_REQUEST['accion'] == "crearNoticia") {
                 $noticia["encabezado"] = filtrado($_REQUEST['encabezado']);
