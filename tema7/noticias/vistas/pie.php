@@ -75,22 +75,24 @@
 
         //Botón cargar formulario nueva noticia --------------------
         document.getElementById("modalNuevaNoticia").addEventListener("click", async function(e) {
-
             e.preventDefault();
 
             //Form INSERTAR
             let enviarFormInsertar = e.target.closest("button[accion=nuevaNoticia]");
-            if (enviarFormInsertar) {
-                
+
+            if (enviarFormInsertar) {                
+                //Cerrar modal
+                var myModalEl = document.getElementById('modalNuevaNoticia');
+                var modal = bootstrap.Modal.getInstance(myModalEl);
+                modal.hide();
+
                 const datos = new FormData(document.getElementById("formNuevaNoticia")); //Lo mandamos siempre con POST
                 datos.append("accion","crearNoticia"); 
+
                 const response = await fetch("enrutador.php", { method: 'POST', body: datos });                
                 //Tratar la respuesta
-                document.getElementById("ajax").innerHTML = await response.text(); //Lo que devuelve la Vista                
+                document.getElementById("ajax").innerHTML = await response.text(); //Lo que devuelve la Vista 
             }
-
-            var modalToggle = document.getElementById('modalNuevaNoticia');
-            modalToggle.hide();
 
         });
         //Fin botón cargar formulario nueva noticia ----------------
