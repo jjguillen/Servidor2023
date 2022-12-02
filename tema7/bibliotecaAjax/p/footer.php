@@ -128,7 +128,13 @@
         });
 
         //Botones de modificar
-        
+        document.getElementById("tablePrestamos").addEventListener('click', function(e) {
+            alert("hola");
+            let botonModificar = e.target.closest("input[accion=modificarPrestamo]");
+            alert(botonModificar.value);
+
+        });
+
         
 
     </script>

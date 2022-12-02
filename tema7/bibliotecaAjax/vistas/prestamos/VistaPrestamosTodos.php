@@ -7,7 +7,7 @@
           include("./p/header.php");
           
 
-          echo "<table id='tablePrestamos' class='table table-dark table-bordered text-center' style='font-size: 15px;align-items: center;' id='dataTable' width='100%' cellspacing='0'>";
+          echo "<table id='tablePrestamos' class='table table-dark table-bordered text-center' style='font-size: 15px;align-items: center;' width='100%' cellspacing='0'>";
       
           //Cabecera
           echo "<tr>";
@@ -88,7 +88,7 @@
               </select></td>';
 
           echo '<input type="hidden" name="idPrestamo" value="'.$prestamo->getIdPrestamo().'">';
-          echo '<td> <input type="hidden" name="accion" value="modificarPrestamo">
+          echo '<td> <input type="hidden" accion="modificarPrestamo" value="'.$prestamo->getIdPrestamo().'">
           <button class="btn btn-warning btn-user btn-block" type="submit">Modificar</button><td>';
 
           echo '</form>';
