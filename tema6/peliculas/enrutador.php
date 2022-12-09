@@ -23,7 +23,7 @@ session_start();
             include_once $ruta; 
         }
 
-        $ruta = "./vistas/usuarios/$clase.php"; 
+        $ruta = "./vistas/login/$clase.php"; 
         if (file_exists($ruta)){ 
             include_once $ruta; 
         }
