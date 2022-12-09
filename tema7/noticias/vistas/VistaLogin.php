@@ -2,7 +2,7 @@
 
     class VistaLogin {
 
-        public static function mostrarFormularioLogin() {
+        public static function mostrarFormularioLogin($mensaje) {
 
 ?>
 
@@ -23,6 +23,7 @@
     <div class='row'>
         <div class='col-6 m-3'>
             <h2>LOGIN PELÍCULAS</h2>
+            <p class='text-danger'><?= $mensaje; ?></p>
             <form action='enrutador.php' method='post'>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>

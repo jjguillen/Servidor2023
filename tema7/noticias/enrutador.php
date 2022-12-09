@@ -1,5 +1,7 @@
 <?php
-    
+    session_start();
+    //session_destroy();
+
     //AUTOLOAD
     function autocarga($clase){ 
         $ruta = "./controladores/$clase.php"; 
@@ -31,9 +33,26 @@
     if ($_REQUEST) {
         if (isset($_REQUEST['accion'])) {
 
-            //Inicio
+            //Inicio - Formulario Login
             if ($_REQUEST['accion'] == "inicio") {
+                ControladorLogin::mostrarFormularioLogin();
+            }
+
+            //Inicio - error de login
+            if ($_REQUEST['accion'] == "error") {
+                ControladorLogin::mostrarFormularioLoginError();
+            }
+
+            //Mostrar noticias
+            if ($_REQUEST['accion'] == "mostrarN") {
                 ControladorNoticia::mostrarNoticias();
+            }
+
+            //CheckLogin
+            if ($_REQUEST['accion'] == "checkLogin") {
+                $email = filtrado($_REQUEST['email']);
+                $password = filtrado($_REQUEST['password']);
+                ControladorLogin::chequearLogin($email, $password);
             }
 
             //Borrar noticia

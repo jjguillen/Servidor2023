@@ -14,6 +14,14 @@
     <div class="container">
         <h2>Noticias 24</h2>
 
+<?php
+    if (isset($_SESSION['usuario'])) {
+        echo "<h6 class='text-secondary'>Soy: ". unserialize($_SESSION['usuario'])->getEmail() ."</h6>";
+    } else {
+        echo "<script>window.location='enrutador.php?accion=inicio';</script>";
+    }
+?>
+
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNuevaNoticia">
             Nueva
         </button>
