@@ -6,14 +6,17 @@
         public static function getNoticias() {
 
             $conexion = ConexionBD::conectar();
+            
+            $coleccion = $conexion->noticias;
 
-            //Consulta BBDD
-            $stmt = $conexion->prepare("SELECT * FROM noticias");
+            $cursor = $coleccion->find();
 
-            $stmt->execute();
-
-            //Usamos FETCH_CLASS para que convierta a objetos las filas de la BD
-            $noticias = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Noticia');
+            //Crear los objetos para devolverlos (MVC), Mongo me devuelve array asociativo
+            $noticias = array();
+            foreach($cursor as $noticia) {
+               $noticia_OBJ = new Noticia($noticia['id'],$noticia['encabezado'],$noticia['texto'],$noticia['fecha']);
+               array_push($noticias, $noticia_OBJ);
+            }
 
             ConexionBD::cerrar();
 
@@ -23,11 +26,7 @@
         public static function borrarNoticia($id) {
             $conexion = ConexionBD::conectar();
 
-            $stmt = $conexion->prepare("DELETE FROM noticias WHERE id = :id");
-            // Bind
-            $stmt->bindValue(":id", $id);
-            // Ejecuta la consulta
-            $stmt->execute();
+            $deleteResult = $conexion->noticias->deleteOne(['id' => intVal($id)]); 
 
             ConexionBD::cerrar();
         }
@@ -35,18 +34,26 @@
         public static function insertNoticia($noticia) {
             $conexion = ConexionBD::conectar();
 
-            try {
-                //Insertar
-                $stmt = $conexion->prepare("INSERT INTO noticias (encabezado, texto, fecha) VALUES (?, ?, ?)");
-                // Bind
-                $stmt->bindValue(1, $noticia->getEncabezado());
-                $stmt->bindValue(2, $noticia->getTexto());
-                $stmt->bindValue(3, $noticia->getFecha());
-                // Ejecuta la consulta
-                $stmt->execute();
-            } catch (PDOException $e){
-                echo $e->getMessage();
-            }
+            //Hacer el autoincrement
+            //Ordeno por id, y me quedo con el mayor
+            $noticiaMayor = $conexion->noticias->findOne(
+                [],
+                [
+                    'sort' => ['id' => -1],
+                ]);
+            if (isset($noticiaMayor))
+                $idValue = $noticiaMayor['id'];
+            else
+                $idValue = 0;
+
+
+            //Collección 'usuarios'
+            $insertOneResult = $conexion->noticias->insertOne([
+                'id' => intVal($idValue + 1),
+                'encabezado' => $noticia->getEncabezado(),
+                'texto' => $noticia->getTexto(),
+                'fecha' => $noticia->getFecha()
+            ]);
 
             ConexionBD::cerrar();
         }
