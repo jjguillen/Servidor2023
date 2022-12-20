@@ -23,7 +23,8 @@
                     $reqPrefs['http']['header'] = 'X-Auth-Token: ';
                     $stream_context = stream_context_create($reqPrefs);
                     $resultado = file_get_contents($uri, false, $stream_context);
-                    
+
+
                     //Pasar de json a objeto php y recorrer los resultados
                     if ($resultado != false) {
                         $respPHP = json_decode($resultado);
