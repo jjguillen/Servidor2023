@@ -14,6 +14,7 @@
             echo "<th scope='col'>Lugar</th>";
             echo "<th scope='col'>Está cubierto</th>";
             echo "<th scope='col'>Estado</th>";
+            echo "<th scope='col'>Jugadores</th>";
     
             echo "<th scope='col'>Acciones</th>";
             echo "</tr>";
@@ -39,6 +40,8 @@
                 if (strtolower($partida->getEstado()) == "cerrada") {
                     echo "<td class='text-danger'>{$partida->getEstado()}</td>";
                 }
+
+                echo "<td class='text-danger'>".count($partida->getJugadores())."</td>";
                 
                 echo "<td>";                
                 echo " <a href='' accion='borrarP' valor='{$partida->getId()}' class='me-3'>";
@@ -74,6 +77,7 @@
             echo "<th scope='col'>Lugar</th>";
             echo "<th scope='col'>Está cubierto</th>";
             echo "<th scope='col'>Estado</th>";
+            echo "<th scope='col'>Jugadores</th>";
     
             echo "<th scope='col'>Acciones</th>";
             echo "</tr>";
@@ -99,6 +103,8 @@
                 if (strtolower($partida->getEstado()) == "cerrada") {
                     echo "<td class='text-danger'>{$partida->getEstado()}</td>";
                 }
+
+                echo "<td class='text-danger'>".count($partida->getJugadores())."</td>";
                 
                 echo "<td>";                
                 echo " <a href='' accion='borrarP' valor='{$partida->getId()}' class='me-3'>";

@@ -15,6 +15,20 @@
             //Usamos FETCH_CLASS para que convierta a objetos las filas de la BD
             $partidas = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Partida');
 
+            //Para cada partida meter sus jugadores
+            foreach($partidas as $partida) {
+                 //Sacamos los jugadores de la partida
+                $stmt = $conexion->prepare("SELECT jugadores.email, jugadores.password, jugadores.nombre, jugadores.apodo,
+                jugadores.nivel, jugadores.edad FROM partida_jugador JOIN jugadores JOIN partidas WHERE 
+                partida_jugador.idPartida = ? AND partida_jugador.idPartida = partidas.id AND partida_jugador.idJugador = jugadores.id");
+                $stmt->bindValue(1, $partida->getId());
+                $stmt->execute();
+
+                $jugadores = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Jugador');
+                //Importante
+                $partida->setJugadores($jugadores);
+            }
+
             ConexionBD::cerrar();
 
             return $partidas;
