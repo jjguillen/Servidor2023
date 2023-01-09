@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const app = require("./app");
 const port = process.env.PORT || 3000;
-const urlMongoAtlas = "mongodb+srv://admin:p7Cx4JSEe3WZeB4@cluster0.qmwhh.mongodb.net/test";
+const urlMongoAtlas = "mongodb+srv://admin:p7Cx4JSEe3WZeB4@cluster0.qmwhh.mongodb.net/?retryWrites=true&w=majority/test";
 
 mongoose.connect(urlMongoAtlas, 
     { useNewUrlParser: true, 
