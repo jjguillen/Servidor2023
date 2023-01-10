@@ -9,7 +9,7 @@
         private static $conexion;
 
 
-        public static function conectar($bd="noticias", $usuario="usuario", $password="usuario", $host="mysql") {
+        public static function conectar($bd="noticias") {
 
             try {
                 //CONEXIÓN A MONGODB CLOUD ATLAS. Comentar esta línea para conectar en local.
