@@ -10,6 +10,11 @@
             VistaSeries::mostrarSerieAPI($id);
         }
 
+        public static function votarSerie($id, $valor) {
+            //Llamar al modelo para insertar esto
+            echo $id . $valor;
+        }
+
     }
 
 

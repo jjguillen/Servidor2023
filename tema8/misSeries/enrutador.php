@@ -62,8 +62,8 @@
 
             //Añadir votación a Mongo
             if ($_REQUEST['accion'] == "votar") {
-                $id = xxxxx ;
-                $valor = $_REQUEST['valor'];
+                $id = filtrado($_REQUEST['id']); ;
+                $valor = filtrado($_REQUEST['valor']);
                 ControladorSeries::votarSerie($id, $valor);
             }
 
