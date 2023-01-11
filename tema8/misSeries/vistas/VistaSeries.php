@@ -31,7 +31,7 @@
                     <img src='http://image.tmdb.org/t/p/w500/". $serie->poster_path ."' class='card-img-top' alt='...'>
                     <div class='card-body'>
                       <h5 class='card-title'>".$serie->name."</h5>                      
-                      <a href='#' class='btn btn-primary'>Detalles</a>
+                      <a href='enrutador.php?accion=mostrarDetalle&id=".$serie->id."' class='btn btn-primary'>Detalles</a>
                     </div>
                   </div>
                   ";
@@ -69,39 +69,99 @@
             include "pie.php";
         }
 
-        public static function renderAjax($noticias) {
-         
-            echo "<table class='table'>";
-            echo "<thead>";
-            echo "<tr>";
-            echo "<th scope='col'>#</th>";
-            echo "<th scope='col'>Encabezado</th>";
-            echo "<th scope='col'>Texto</th>";
-            echo "<th scope='col'>Fecha</th>";
-            echo "<th scope='col'>Acciones</th>";
-            echo "</tr>";
-            echo "</thead>";
-            echo "<tbody>";   
 
-            foreach($noticias as $noticia) {
-                echo "<tr>";
-                echo "<th scope='row'>{$noticia->getId()}</th>";
-                echo "<td>{$noticia->getEncabezado()}</td>";
-                echo "<td>{$noticia->getTexto()}</td>";
-                echo "<td>{$noticia->getFecha()}</td>";
-                echo "<td>";
-                
-                echo "<button id='borrarNoticia' accion='borrarN' value='{$noticia->getId()}' class='btn btn-primary'>X</button>";
-                
-                //<a href='enrutador.php?accion=borrarN&id={$noticia->getId()}'>X
-                
-                echo "</a></td>";
-                echo "</tr>";
+        public static function mostrarSerieAPI($id) {
+
+            include "cabecera.php";            
+
+            echo "<div class='container'>";
+
+            echo "<div class='row'>";
+
+            $key = "api_key=a74c122b22807a76b7637ac1407a045e";
+
+            $uri = "https://api.themoviedb.org/3/tv/".$id."?language=es&".$key;
+            
+            $resultado = file_get_contents($uri, false);
+
+            //Pasar de json a objeto php y recorrer los resultados
+            if ($resultado != false) {
+                $respPHP = json_decode($resultado);
+
+                $directores = "";
+                foreach($respPHP->created_by as $director) {
+                    $directores .= $director->name . " ";
+                }
+
+                $generos = "";
+                foreach($respPHP->genres as $genero) {
+                    $generos .= $genero->name . " ";
+                }
+
+                //Sacar la nota de la serie de MongoDB
+                $nota = "-";
+
+                echo "
+                <div class='card mb-3' style='max-width: 540px;'>
+                    <div class='row g-0'>
+                        <div class='col-md-4'>
+                        <img src='http://image.tmdb.org/t/p/w500/".$respPHP->poster_path."' class='img-fluid rounded-start' alt='...'>
+                        </div>
+                        <div class='col-md-8'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>".$respPHP->name."</h5>
+                            <p class='card-text'>".$respPHP->overview."</p>
+                            <p class='card-text'>Directores: ".$directores."</p>                            
+                            <p class='card-text'>Géneros: ".$generos."</p>
+                            <p class='card-text'><small class='text-muted'>Número de episodios: ".$respPHP->number_of_episodes."</small></p>
+                            <p class='card-text'><small class='text-muted'>Número de temporadas: ".$respPHP->number_of_seasons."</small></p>
+                            <p class='card-text'><small class='text-primary'>Mi nota: ".$nota."</small></p>
+                            <p class='card-text'>
+                            <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalVoto'>
+                            Votar
+                            </button>
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                ";
+
             }
 
-            echo "</tbody></table>";
-        }
+            //Vídeos
+            $uri = "https://api.themoviedb.org/3/tv/".$id."/videos?language=en&".$key;
+            
+            $resultado = file_get_contents($uri, false);
 
+            //Pasar de json a objeto php y recorrer los resultados
+            if ($resultado != false) {
+                $respPHP = json_decode($resultado);
+
+                $video = $respPHP->results[0];
+                if ($video != null) {
+                    $id = $video->key;
+
+                    echo "
+                    <div class='card mb-3' style='max-width: 540px;'>
+                        <div class='row g-0'>
+                            
+                        <iframe width='560' height='315' src='https://www.youtube.com/embed/".$id."' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe>
+
+                        </div>
+                        </div>
+                    ";
+
+
+                }
+            }
+
+
+
+
+            include "pie.php";
+
+        }
 
     }
 

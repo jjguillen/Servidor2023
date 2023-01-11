@@ -53,6 +53,21 @@
                 ControladorSeries::mostrarSeries($_GET['pagina']);
             }
             
+
+            //Mostrar series en detalle
+            if ($_REQUEST['accion'] == "mostrarDetalle") {
+                $id = filtrado($_GET['id']);
+                ControladorSeries::mostrarSerie($id);
+            }
+
+            //Añadir votación a Mongo
+            if ($_REQUEST['accion'] == "votar") {
+                $id = xxxxx ;
+                $valor = $_REQUEST['valor'];
+                ControladorSeries::votarSerie($id, $valor);
+            }
+
+
             //CheckLogin
             if ($_REQUEST['accion'] == "checkLogin") {
                 $email = filtrado($_REQUEST['email']);
