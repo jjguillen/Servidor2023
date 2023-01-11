@@ -163,22 +163,21 @@
             if ($resultado != false) {
                 $respPHP = json_decode($resultado);
 
-                $video = $respPHP->results[0];
-                if ($video != null) {
+                if (count($respPHP->results) > 0) {
+                    $video = $respPHP->results[0];
                     $id = $video->key;
-
+    
                     echo "
                     <div class='card mb-3' style='max-width: 540px;'>
                         <div class='row g-0'>
                             
                         <iframe width='560' height='315' src='https://www.youtube.com/embed/".$id."' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe>
-
+    
                         </div>
                         </div>
-                    ";
-
-
+                    ";    
                 }
+
             }
 
 
